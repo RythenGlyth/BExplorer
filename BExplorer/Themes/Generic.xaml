@@ -1,0 +1,36 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:be="using:BExplorer"
+    xmlns:bec="using:BExplorer.Controls"
+    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions">
+
+    <Style TargetType="bec:ResizeableDoublePage">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="bec:ResizeableDoublePage">
+                    <Grid x:Name="OuterGrid" Background="{TemplateBinding Background}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=LeftMinWidth}" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition MinWidth="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RightMinWidth}" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <ContentPresenter x:Name="LeftPanel" Grid.Column="0" Content="{TemplateBinding LeftPanel}" 
+                                          VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+
+                        <Grid x:Name="Draggable" Grid.Column="1" Width="{TemplateBinding DraggableWidth}"
+                              VerticalAlignment="Stretch" extensions:Mouse.Cursor="SizeWestEast"  Background="Transparent">
+                        </Grid>
+
+                        <ContentPresenter x:Name="RightPanel" Grid.Column="2" Content="{TemplateBinding RightPanel}" 
+                                              VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

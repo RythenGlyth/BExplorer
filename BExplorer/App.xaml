@@ -4,4 +4,28 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BExplorer">
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <ResourceDictionary>
+                    <ResourceDictionary.ThemeDictionaries>
+                        <ResourceDictionary x:Key="Light">
+                            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="White" />
+                            <SolidColorBrush x:Key="ThinLineBrush" Color="LightGray"/>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="Dark">
+                            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#201F1E" />
+                            <SolidColorBrush x:Key="ThinLineBrush" Color="LightGray"/>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="HighContrast">
+                            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#201F1E" />
+                            <SolidColorBrush x:Key="ThinLineBrush" Color="LightGray"/>
+                        </ResourceDictionary>
+                    </ResourceDictionary.ThemeDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
 </Application>

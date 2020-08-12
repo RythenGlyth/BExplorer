@@ -2,13 +2,180 @@
     x:Class="BExplorer.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:BExplorer"
+    xmlns:be="using:BExplorer"
+    xmlns:bec="using:BExplorer.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    Background="{ThemeResource SystemChromeMediumLowColor}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="AppTitleBar" Grid.Row="0" Loaded="AppTitleBar_Loaded" Background="{ThemeResource SystemChromeMediumColor}">
+            <TextBlock Padding="6" Text="BExplorer" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <MenuBar Grid.Row="0">
+                <MenuBarItem x:Uid="MenuBar_File">
 
+                </MenuBarItem>
+                <MenuBarItem x:Uid="MenuBar_Tools">
+                    <MenuFlyoutSeparator/>
+                    <MenuFlyoutItem x:Name="SettingsButton" x:Uid="MenuBar_Tools_Settings" Icon="Setting" Click="SettingsButton_Click">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F1" />
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                </MenuBarItem>
+            </MenuBar>
+
+            <Border Grid.Row="1" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0, 0.5, 0, 0" HorizontalAlignment="Stretch"/>
+
+            <!-- Upper Button Bar -->
+            <Grid Grid.Row="2" Margin="5, 5, 5, 5">
+                <StackPanel Height="32" Orientation="Horizontal" Spacing="3" FlowDirection="LeftToRight" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Left">
+                    <Button Width="32" Height="32" Padding="0" Background="Transparent" CornerRadius="0" >
+                        <SymbolIcon Symbol="Play" />
+                    </Button>
+                    <Button Width="32" Height="32" Padding="0" Background="Transparent" CornerRadius="0" >
+                        <SymbolIcon Symbol="Play" />
+                    </Button>
+                    
+                    <Border Margin="5, 0" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0.5, 0, 0, 0" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
+
+                    <Button Width="32" Height="32" Padding="0" Background="Transparent" CornerRadius="0" >
+                        <SymbolIcon Symbol="Play" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Border Grid.Row="3" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0, 0.5, 0, 0" HorizontalAlignment="Stretch"></Border>
+
+            <!-- Main Window -->
+
+            <bec:ResizeableDoublePage x:Name="MainWindow" Grid.Row="4" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <bec:ResizeableDoublePage.LeftPanel>
+                    <Border BorderThickness="0, 0, 1, 0" BorderBrush="AliceBlue">
+                        <TextBlock Text="testL" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </bec:ResizeableDoublePage.LeftPanel>
+                <bec:ResizeableDoublePage.RightPanel>
+                    <Border BorderThickness="1, 0, 0, 0" BorderBrush="AliceBlue">
+                        <TextBlock Text="testR" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </bec:ResizeableDoublePage.RightPanel>
+            </bec:ResizeableDoublePage>
+            <!--<Grid x:Name="MainWindow" Grid.Row="4" 
+                  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                  SizeChanged="MainWindow_SizeChanged">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="200"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition MinWidth="200"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <controls:GridSplitter x:Name="PanelSplitter" Grid.Column="1" Width="1" ResizeBehavior="BasedOnAlignment"
+                                           ResizeDirection="Columns" Background="Transparent" >
+                    <controls:GridSplitter.Element>
+                        <Grid />
+                    </controls:GridSplitter.Element>
+                </controls:GridSplitter>
+            </Grid>-->
+
+            <!-- Console input -->
+            <bec:ResizeableDoublePage Grid.Row="5" LeftMinWidth="300" RightMinWidth="500" Margin="5" DefaultDraggablePosition="0.35">
+                <bec:ResizeableDoublePage.LeftPanel>
+                    <TextBlock Text="PATH" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                </bec:ResizeableDoublePage.LeftPanel>
+                <bec:ResizeableDoublePage.RightPanel>
+                    <ComboBox PlaceholderText="Command" IsEditable="True"  CornerRadius="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                        <ComboBoxItem Content="A" />
+                        <ComboBoxItem Content="B" />
+                        <ComboBoxItem Content="C" />
+                        <ComboBoxItem Content="D" />
+                        <ComboBoxItem Content="E" />
+                    </ComboBox>
+                </bec:ResizeableDoublePage.RightPanel>
+            </bec:ResizeableDoublePage>
+
+            <!-- Bottom Button Bar -->
+            <Grid x:Name="BottomButtonBar" Grid.Row="6" Height="26">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0, 0, 0, 0">
+                    <Button x:Name="BottomButtonBar_View" x:Uid="BottomButtonBar_View" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="0" Padding="0" Background="Transparent">
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F3" />
+                        </Button.KeyboardAccelerators>
+                    </Button>
+                </Border>
+                <Border Grid.Column="1" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0.5, 0, 0, 0">
+                    <Button x:Name="BottomButtonBar_Edit" x:Uid="BottomButtonBar_Edit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="0" Padding="0" Background="Transparent">
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F4" />
+                        </Button.KeyboardAccelerators>
+                    </Button>
+                </Border>
+                <Border Grid.Column="2" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0.5, 0, 0, 0">
+                    <Button x:Name="BottomButtonBar_Copy" x:Uid="BottomButtonBar_Copy" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="0" Padding="0" Background="Transparent">
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F5" />
+                        </Button.KeyboardAccelerators>
+                    </Button>
+                </Border>
+                <Border Grid.Column="3" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0.5, 0, 0, 0">
+                    <Button x:Name="BottomButtonBar_Move" x:Uid="BottomButtonBar_Move" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="0" Padding="0" Background="Transparent">
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F6" />
+                        </Button.KeyboardAccelerators>
+                    </Button>
+                </Border>
+                <Border Grid.Column="4" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0.5, 0, 0, 0">
+                    <Button x:Name="BottomButtonBar_NewFolder" x:Uid="BottomButtonBar_NewFolder" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="0" Padding="0" Background="Transparent">
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F7" />
+                        </Button.KeyboardAccelerators>
+                    </Button>
+                </Border>
+                <Border Grid.Column="5" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0.5, 0, 0, 0">
+                    <Button x:Name="BottomButtonBar_NewFile" x:Uid="BottomButtonBar_NewFolder" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="0" Padding="0" Background="Transparent">
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F8" />
+                        </Button.KeyboardAccelerators>
+                    </Button>
+                </Border>
+                <Border Grid.Column="6" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0.5, 0, 0, 0">
+                    <Button x:Name="BottomButtonBar_Delete" x:Uid="BottomButtonBar_Delete" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="0" Padding="0" Background="Transparent">
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="F9" />
+                        </Button.KeyboardAccelerators>
+                    </Button>
+                </Border>
+                <Border Grid.Column="7" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0.5, 0, 0, 0">
+                    <Button x:Name="BottomButtonBar_Exit" x:Uid="BottomButtonBar_Exit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="0" Padding="0" Background="Transparent" Click="BottomButtonBar_Exit_Click">
+                    </Button>
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
