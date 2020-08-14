@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="BExplorer.MainPage"
+    x:Class="BExplorer.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:be="using:BExplorer"
@@ -100,7 +100,9 @@
                     <TextBlock Text="PATH" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" VerticalAlignment="Center" />
                 </bec:ResizeableDoublePage.LeftPanel>
                 <bec:ResizeableDoublePage.RightPanel>
-                    <ComboBox PlaceholderText="Command" IsEditable="True"  CornerRadius="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                    <ComboBox x:Name="CommandBox" PlaceholderText="Command" 
+                              IsEditable="True"  CornerRadius="0" VerticalAlignment="Stretch" 
+                              HorizontalAlignment="Stretch" KeyDown="CommandBox_KeyDown" >
                         <ComboBoxItem Content="A" />
                         <ComboBoxItem Content="B" />
                         <ComboBoxItem Content="C" />

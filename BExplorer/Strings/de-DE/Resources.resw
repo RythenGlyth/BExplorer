@@ -141,6 +141,12 @@
   <data name="BottomButtonBar_View.Content" xml:space="preserve">
     <value>F3 Ansehen</value>
   </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="LightTheme" xml:space="preserve">
+    <value>Hell</value>
+  </data>
   <data name="MenuBar_File.Title" xml:space="preserve">
     <value>Datei</value>
   </data>
@@ -150,10 +156,40 @@
   <data name="MenuBar_Tools_Settings.Text" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="SettingsAboutTitle.Text" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="SettingsAppearanceTheme.Text" xml:space="preserve">
+    <value>App Thema</value>
+  </data>
+  <data name="SettingsAppearanceTitle.Text" xml:space="preserve">
+    <value>Aussehen</value>
+  </data>
+  <data name="SettingsNavAbout.Content" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="SettingsNavAppearance.Content" xml:space="preserve">
+    <value>Aussehen</value>
+  </data>
+  <data name="SettingsNavPreferences.Content" xml:space="preserve">
+    <value>Konfiguration</value>
+  </data>
+  <data name="SettingsNavToolbar.Content" xml:space="preserve">
+    <value>Toolbar</value>
+  </data>
   <data name="SettingsPageHeader.Text" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
   <data name="SettingsPageTitleBarTextBox.Text" xml:space="preserve">
     <value>Einstellungen</value>
+  </data>
+  <data name="SettingsPreferencesTitle.Text" xml:space="preserve">
+    <value>Konfiguration</value>
+  </data>
+  <data name="SettingsToolbarTitle.Text" xml:space="preserve">
+    <value>Toolbar</value>
+  </data>
+  <data name="SystemTheme" xml:space="preserve">
+    <value>Systemstandard</value>
   </data>
 </root>

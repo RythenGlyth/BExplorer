@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -22,8 +23,7 @@ using Windows.UI.Xaml.Resources;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace BExplorer
-{
+namespace BExplorer.Views {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -59,7 +59,6 @@ namespace BExplorer
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e) {
-            App.settings.SelectedTheme = ElementTheme.Default;
             this.Frame.Navigate(typeof(SettingsPage));
         }
 
@@ -70,6 +69,12 @@ namespace BExplorer
         private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e) {
             //double percentage = this.MainWindow.ColumnDefinitions[0].ActualWidth / (this.MainWindow.ColumnDefinitions[0].ActualWidth + this.MainWindow.ColumnDefinitions[2].ActualWidth);
             // Debug.WriteLine("test" + percentage);
+        }
+
+        private void CommandBox_KeyDown(object sender, KeyRoutedEventArgs e) {
+            if(e.Key == VirtualKey.Enter) {
+                Debug.WriteLine(CommandBox.Text);
+            }
         }
     }
 }

@@ -1,0 +1,77 @@
+﻿<Page
+    x:Class="BExplorer.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BExplorer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid x:Name="AppTitleBar"
+              Height="32"
+              Margin="40,0,0,0"
+              VerticalAlignment="Top"
+              Background="Transparent"
+              Loaded="AppTitleBar_Loaded"
+              Canvas.ZIndex="100">
+            <TextBlock Padding="10" x:Uid="AppName" Text="BExplorer" />
+        </Grid>
+
+        <muxc:NavigationView IsTitleBarAutoPaddingEnabled="False"
+                             BackRequested="NavigationView_BackRequested"
+                             IsBackEnabled="True"
+                             IsBackButtonVisible="Visible"
+                             IsSettingsVisible="False"
+                             IsPaneToggleButtonVisible="False"
+                             ItemInvoked="NavigationView_ItemInvoked"
+                             PaneDisplayMode="Left"
+                             Loaded="NavigationView_Loaded"
+                             x:Name="NavView"
+                             SelectionChanged="NavView_SelectionChanged"
+                             Background="{ThemeResource SystemControlPageBackgroundMediumAltMediumBrush}">
+            <muxc:NavigationView.PaneHeader>
+                <TextBlock
+                    x:Uid="SettingsPageHeader"
+                    Margin="10,6"
+                    FontSize="20"
+                    FontWeight="Medium"
+                    Text="Settings" />
+            </muxc:NavigationView.PaneHeader>
+
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Tag="Appearance" x:Uid="SettingsNavAppearance">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE790;" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Tag="Preferences" x:Uid="SettingsNavPreferences">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE771;" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Tag="Toolbar" x:Uid="SettingsNavToolbar">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76F;" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Tag="About" x:Uid="SettingsNavAbout">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+
+            </muxc:NavigationView.MenuItems>
+
+            <!--<muxc:NavigationView.AutoSuggestBox>
+                 See AutoSuggestBox documentation for
+                 more info about how to implement search.
+                <AutoSuggestBox x:Name="NavViewSearchBox" QueryIcon="Find"/>
+            </muxc:NavigationView.AutoSuggestBox>-->
+
+            <Frame Margin="0, 32, 0, 0" x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"/>
+
+        </muxc:NavigationView>
+    </Grid>
+</Page>

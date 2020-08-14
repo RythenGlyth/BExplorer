@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BExplorer.Views.SettingsPages;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -13,14 +15,13 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace BExplorer {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+namespace BExplorer.Views {
+
     public sealed partial class SettingsPage : Page {
         public SettingsPage() {
             this.InitializeComponent();
@@ -29,6 +30,35 @@ namespace BExplorer {
             coreTitleBar.ExtendViewIntoTitleBar = true;
             coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
             coreTitleBar.IsVisibleChanged += CoreTitleBar_IsVisibleChanged;
+        }
+
+        private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)> {
+            ("Appearance", typeof(AppearancePage)),
+            ("Preferences", typeof(PreferencesPage)),
+            ("Toolbar", typeof(ToolbarPage)),
+            ("About", typeof(AboutPage)),
+        };
+
+        private void NavigationView_Loaded(object sender, RoutedEventArgs e) {
+            NavView.SelectedItem = NavView.MenuItems[0];
+        }
+
+        private void NavView_SelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args) {
+            if(args.SelectedItemContainer != null) {
+                var navItemTag = args.SelectedItemContainer.Tag.ToString();
+                NavView_Navigate(navItemTag, args.RecommendedNavigationTransitionInfo);
+            }
+        }
+        private void NavView_Navigate(string navItemTag, NavigationTransitionInfo transitionInfo) {
+            Type _page = null;
+            var item = _pages.FirstOrDefault(p => p.Tag.Equals(navItemTag));
+            _page = item.Page;
+
+            var preNavPageType = ContentFrame.CurrentSourcePageType;
+
+            if(!(_page is null) && !Type.Equals(preNavPageType, _page)) {
+                ContentFrame.Navigate(_page, null, transitionInfo);
+            }
         }
 
         private void CoreTitleBar_IsVisibleChanged(CoreApplicationViewTitleBar sender, object args) {
@@ -46,6 +76,10 @@ namespace BExplorer {
 
         private void NavigationView_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args) {
             this.Frame.GoBack();
+        }
+
+        private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args) {
+            Debug.WriteLine(args.InvokedItem);
         }
     }
 }
