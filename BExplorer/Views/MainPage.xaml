@@ -44,19 +44,24 @@
             <Border Grid.Row="1" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0, 0.5, 0, 0" HorizontalAlignment="Stretch"/>
 
             <!-- Upper Button Bar -->
-            <Grid Grid.Row="2" Margin="5, 5, 5, 5">
+            <Grid Grid.Row="2" Margin="5, 5, 5, 5" HorizontalAlignment="Stretch" Background="Transparent">
+                <Grid.ContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Change" Click="MenuFlyoutItem_Click" />
+                    </MenuFlyout>
+                </Grid.ContextFlyout>
                 <StackPanel Height="32" Orientation="Horizontal" Spacing="3" FlowDirection="LeftToRight" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Left">
                     <Button Width="32" Height="32" Padding="0" Background="Transparent" CornerRadius="0" >
-                        <SymbolIcon Symbol="Play" />
+                        <Image Source="/Assets/Square44x44Logo.scale-400.png" Stretch="UniformToFill" />
                     </Button>
                     <Button Width="32" Height="32" Padding="0" Background="Transparent" CornerRadius="0" >
-                        <SymbolIcon Symbol="Play" />
+                        <Image Source="/Assets/Square44x44Logo.scale-400.png" Stretch="UniformToFill" />
                     </Button>
                     
                     <Border Margin="5, 0" BorderBrush="{ThemeResource ThinLineBrush}" BorderThickness="0.5, 0, 0, 0" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
 
                     <Button Width="32" Height="32" Padding="0" Background="Transparent" CornerRadius="0" >
-                        <SymbolIcon Symbol="Play" />
+                        <Image Source="/Assets/Square44x44Logo.scale-400.png" Stretch="UniformToFill" />
                     </Button>
                 </StackPanel>
             </Grid>
@@ -67,12 +72,12 @@
 
             <bec:ResizeableDoublePage x:Name="MainWindow" Grid.Row="4" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                 <bec:ResizeableDoublePage.LeftPanel>
-                    <Border BorderThickness="0, 0, 1, 0" BorderBrush="AliceBlue">
+                    <Border BorderThickness="0.5, 0, 1, 0" BorderBrush="{ThemeResource ThinLineBrush}">
                         <TextBlock Text="testL" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Border>
                 </bec:ResizeableDoublePage.LeftPanel>
                 <bec:ResizeableDoublePage.RightPanel>
-                    <Border BorderThickness="1, 0, 0, 0" BorderBrush="AliceBlue">
+                    <Border BorderThickness="0.5, 0, 0, 0" BorderBrush="{ThemeResource ThinLineBrush}">
                         <TextBlock Text="testR" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Border>
                 </bec:ResizeableDoublePage.RightPanel>
@@ -102,7 +107,9 @@
                 <bec:ResizeableDoublePage.RightPanel>
                     <ComboBox x:Name="CommandBox" PlaceholderText="Command" 
                               IsEditable="True"  CornerRadius="0" VerticalAlignment="Stretch" 
-                              HorizontalAlignment="Stretch" KeyDown="CommandBox_KeyDown" >
+                              HorizontalAlignment="Stretch" KeyDown="CommandBox_KeyDown"
+                              PlaceholderForeground="{ThemeResource SystemBaseLowColor}"
+                              Background="Transparent">
                         <ComboBoxItem Content="A" />
                         <ComboBoxItem Content="B" />
                         <ComboBoxItem Content="C" />

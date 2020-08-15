@@ -183,6 +183,9 @@
   <data name="SettingsPageTitleBarTextBox.Text" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="SettingsPreferencesDefaultLanguageOption" xml:space="preserve">
+    <value>Systemstandard</value>
+  </data>
   <data name="SettingsPreferencesTitle.Text" xml:space="preserve">
     <value>Konfiguration</value>
   </data>

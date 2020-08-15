@@ -39,8 +39,11 @@ namespace BExplorer.Views {
             ("About", typeof(AboutPage)),
         };
 
+        private int defaultItemIndex = 0;
+
         private void NavigationView_Loaded(object sender, RoutedEventArgs e) {
-            NavView.SelectedItem = NavView.MenuItems[0];
+            Debug.WriteLine("ll: " + defaultItemIndex);
+            NavView.SelectedItem = NavView.MenuItems[defaultItemIndex];
         }
 
         private void NavView_SelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args) {
@@ -58,6 +61,21 @@ namespace BExplorer.Views {
 
             if(!(_page is null) && !Type.Equals(preNavPageType, _page)) {
                 ContentFrame.Navigate(_page, null, transitionInfo);
+            }
+        }
+
+        public int getCurrentPageIndex() {
+            return NavView.MenuItems.IndexOf(NavView.SelectedItem);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            base.OnNavigatedTo(e);
+            Debug.WriteLine("nn: " + e.Parameter);
+            if(e.Parameter is int) {
+                defaultItemIndex = (int)e.Parameter;
+            }
+            if(e.Parameter is string) {
+                defaultItemIndex = _pages.FindIndex(p => p.Tag.Equals(e.Parameter));
             }
         }
 

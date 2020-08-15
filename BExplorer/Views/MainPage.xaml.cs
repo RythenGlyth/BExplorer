@@ -66,15 +66,14 @@ namespace BExplorer.Views {
             CoreApplication.Exit();
         }
 
-        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e) {
-            //double percentage = this.MainWindow.ColumnDefinitions[0].ActualWidth / (this.MainWindow.ColumnDefinitions[0].ActualWidth + this.MainWindow.ColumnDefinitions[2].ActualWidth);
-            // Debug.WriteLine("test" + percentage);
-        }
-
         private void CommandBox_KeyDown(object sender, KeyRoutedEventArgs e) {
             if(e.Key == VirtualKey.Enter) {
                 Debug.WriteLine(CommandBox.Text);
             }
+        }
+
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e) {
+            this.Frame.Navigate(typeof(SettingsPage), "Toolbar");
         }
     }
 }

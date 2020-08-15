@@ -21,7 +21,18 @@
                     FontWeight="Medium"
                     Text="Preferences" />
 
-
+                <StackPanel Spacing="10">
+                    <TextBlock
+                        x:Uid="SettingsPreferencesLanguage"
+                        FontSize="17"
+                        Text="Language" />
+                    <ComboBox
+                        x:Name="LanguageComboBox"
+                        CornerRadius="0"
+                        ItemsSource="{x:Bind AppSettings.DefaultLanguages}"
+                        SelectedItem="{x:Bind AppSettings.SelectedLanguage, Mode=TwoWay}"
+                        Width="250" />
+                </StackPanel>
 
             </StackPanel>
         </ScrollViewer>
