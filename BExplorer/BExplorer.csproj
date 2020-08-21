@@ -122,8 +122,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="Controls\Explorer\ExplorersWindow.cs" />
     <Compile Include="Controls\ResizeableDoublePane\ResizeableDoublePage.cs" />
     <Compile Include="Controls\ResizeableDoublePane\ResizeableDoublePage.Options.cs" />
+    <Compile Include="Controls\SmallCleanTabView\SmallCleanTabView.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -207,6 +209,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\Explorer\ExplorersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ResizeableDoublePane\ResizeableDoublePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\TabView_themeresources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

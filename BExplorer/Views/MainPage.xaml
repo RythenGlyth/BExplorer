@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:be="using:BExplorer"
     xmlns:bec="using:BExplorer.Controls"
+    xmlns:bece="using:BExplorer.Controls.Explorer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
@@ -72,14 +73,10 @@
 
             <bec:ResizeableDoublePage x:Name="MainWindow" Grid.Row="4" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                 <bec:ResizeableDoublePage.LeftPanel>
-                    <Border BorderThickness="0.5, 0, 1, 0" BorderBrush="{ThemeResource ThinLineBrush}">
-                        <TextBlock Text="testL" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    </Border>
+                    <bece:ExplorersWindow VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                 </bec:ResizeableDoublePage.LeftPanel>
                 <bec:ResizeableDoublePage.RightPanel>
-                    <Border BorderThickness="0.5, 0, 0, 0" BorderBrush="{ThemeResource ThinLineBrush}">
-                        <TextBlock Text="testR" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    </Border>
+                    <bece:ExplorersWindow VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                 </bec:ResizeableDoublePage.RightPanel>
             </bec:ResizeableDoublePage>
             <!--<Grid x:Name="MainWindow" Grid.Row="4" 

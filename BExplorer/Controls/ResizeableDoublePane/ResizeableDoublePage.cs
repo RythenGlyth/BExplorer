@@ -81,7 +81,7 @@ namespace BExplorer.Controls {
                     Math.Max(
                         outerGrid.ColumnDefinitions[0].MinWidth,
                         Math.Min(
-                            (Math.Round((mouseX / outerGrid.ActualWidth) * 8) * outerGrid.ActualWidth) / 8,
+                            (Math.Round(((mouseX - (outerGrid.ColumnDefinitions[1].ActualWidth / 2)) / outerGrid.ActualWidth) * 8) * outerGrid.ActualWidth) / 8,
                             outerGrid.ActualWidth - outerGrid.ColumnDefinitions[1].ActualWidth - outerGrid.ColumnDefinitions[2].MinWidth
                         )
                     )
@@ -91,7 +91,7 @@ namespace BExplorer.Controls {
                     Math.Max(
                         outerGrid.ColumnDefinitions[0].MinWidth,
                         Math.Min(
-                            mouseX,
+                            mouseX - (outerGrid.ColumnDefinitions[1].ActualWidth / 2),
                             outerGrid.ActualWidth - outerGrid.ColumnDefinitions[1].ActualWidth - outerGrid.ColumnDefinitions[2].MinWidth
                         )
                     )
